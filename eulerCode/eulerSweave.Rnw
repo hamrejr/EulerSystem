@@ -1,0 +1,60 @@
+\documentclass{article}
+
+ 
+\begin{document} 
+\SweaveOpts{concordance=TRUE}
+\title{Euler System Through Time}  
+\author{John R. Hamre III, M.S.}
+\maketitle
+
+
+
+<<>>=
+library(scatterplot3d)
+fun <- function(x){- 0.5*(y)}
+fun1 <- function(x,y){ x}
+
+dx=NULL
+dy=NULL
+time=NULL
+
+x<-0
+y<-1
+dt<-.1
+t<-0
+n=9.9
+
+
+while(t<n)
+
+    {
+   
+   y= y + fun1(x,y)*dt
+   x= x + fun(y)*dt 
+  
+ 
+  t=t+dt
+
+dx = rbind(dx, data.frame(x))
+dy = rbind(dy, data.frame(y))
+time = rbind(time, data.frame(t))
+
+
+
+}
+
+print(dx) 
+  print(dy)
+
+plot(data.matrix(dx),data.matrix(dy), main="2D Plot of Euler System", col="red")
+scatterplot3d(data.matrix(dx),data.matrix(dy),data.matrix(time),pch = 20, color="rainbow", main="3D Scatterplot of Euler System")
+
+print(x)
+print(y)
+
+
+@
+
+
+
+\end{document}
